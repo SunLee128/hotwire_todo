@@ -1,12 +1,8 @@
-<div id="<%= dom_id item %>">
-  <p>
-    <strong>Description:</strong>
-    <%= item.description %>
-  </p>
-
-  <p>
-    <strong>Completed:</strong>
-    <%= item.completed %>
-  </p>
-
+<%= turbo_frame_tag item do %>
+<div class="flex flex-row m-2">
+  <%= check_box_tag 'done', item.completed %>
+  <p class="w-96 bg-orange-200"><%= item.description %></p>
+  <%= button_to 'Destroy', item_path(item), method: :delete, class: "btn btn-sm
+  btn-outline-danger" %>
 </div>
+<% end %>
