@@ -6,11 +6,10 @@
     <% end %>
   </ul>
 </div>
-<% end %>
-
+<% end %> <%= turbo_frame_tag "item_form" do %>
 <div class="field">
-  <%= form.label :description %> <%= form.text_area :description, class: "block
-  border border-grey-light w-full p-3 rounded mb-4" %>
+  <%= form.text_field :description, class: "block border border-grey-light
+  w-full p-3 rounded mb-4" %>
 </div>
 <div><%= form.submit %></div>
-<% end %>
+<% end %> <% end %>

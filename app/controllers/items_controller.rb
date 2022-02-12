@@ -1,9 +1,12 @@
 class ItemsController < ApplicationController
   before_action :set_item, only: %i[ show edit update destroy ]
+  attr_accessor :completed
 
   # GET /items or /items.json
   def index
+    @item = Item.new
     @items = Item.all
+    @completed_count = @items.filter(&:completed).count
   end
 
   # GET /items/1 or /items/1.json
@@ -25,7 +28,7 @@ class ItemsController < ApplicationController
 
     respond_to do |format|
       if @item.save
-        format.html { redirect_to item_url(@item), notice: "Item was successfully created." }
+        format.html { render @item, notice: "Item was successfully created." }
         # format.json { render :show, status: :created, location: @item }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -39,10 +42,10 @@ class ItemsController < ApplicationController
     respond_to do |format|
       if @item.update(item_params)
         format.html { redirect_to item_url(@item), notice: "Item was successfully updated." }
-        format.json { render :show, status: :ok, location: @item }
+        # format.json { render :show, status: :ok, location: @item }
       else
         format.html { render :edit, status: :unprocessable_entity }
-        format.json { render json: @item.errors, status: :unprocessable_entity }
+        # format.json { render json: @item.errors, status: :unprocessable_entity }
       end
     end
   end

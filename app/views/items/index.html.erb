@@ -1,7 +1,14 @@
 <%= turbo_stream_from "items" %>
-<div class="p-10">
-  <h1 class="mb-4 text-4xl font-black">Hotwire TodoList</h1>
-  <%= link_to "New item", new_item_path %> <%= turbo_frame_tag "items" do %>
+<div class="p-10 bg-green-100">
+  <h1
+    class="mb-4 text-4xl text-center text-green-900 font-sans tracking-widest"
+  >
+    TODO
+  </h1>
+  <%= render "items/form", item: @item %> <%= turbo_frame_tag "items" do %>
   <div id="items"><%= render @items %></div>
   <% end %>
+  <div class="text-gray-500">
+    <%= @completed_count %> of <%= @items.count %> items
+  </div>
 </div>
