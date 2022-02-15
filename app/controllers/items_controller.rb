@@ -31,7 +31,7 @@ class ItemsController < ApplicationController
         format.html { render @item, notice: "Item was successfully created." }
         # format.json { render :show, status: :created, location: @item }
       else
-        format.html { render :new, status: :unprocessable_entity }
+        # format.html { render :new, status: :unprocessable_entity }
         # format.json { render json: @item.errors, status: :unprocessable_entity }
       end
     end
@@ -39,14 +39,12 @@ class ItemsController < ApplicationController
 
   # PATCH/PUT /items/1 or /items/1.json
   def update
+    @item = Item.find(params[:id])
+    @item.update item_params
+    @item.save
     respond_to do |format|
-      if @item.update(item_params)
-        format.html { redirect_to item_url(@item), notice: "Item was successfully updated." }
-        # format.json { render :show, status: :ok, location: @item }
-      else
-        format.html { render :edit, status: :unprocessable_entity }
-        # format.json { render json: @item.errors, status: :unprocessable_entity }
-      end
+      format.js
+      format.html { redirect_to item_url(@item), notice: "Item was successfully updated." }
     end
   end
 

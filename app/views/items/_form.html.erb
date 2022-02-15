@@ -1,15 +1,8 @@
-<%= form_with(model: item) do |form| %> <% if item.errors.any? %>
-<div style="color: red">
-  <ul>
-    <% item.errors.each do |error| %>
-    <li><%= error.full_message %></li>
-    <% end %>
-  </ul>
-</div>
-<% end %> <%= turbo_frame_tag "item_form" do %>
-<div class="field">
-  <%= form.text_field :description, class: "block border border-grey-light
-  w-full p-3 rounded mb-4" %>
-</div>
-<div><%= form.submit %></div>
-<% end %> <% end %>
+<%= form_with(model: item) do |form| %> 
+  <%= turbo_frame_tag "item_form" do %>
+  <div class="field">
+    <%= form.text_field :description, class: "block border border-grey-light
+    w-full p-3 rounded mb-4" %>
+  </div>
+  <% end %> 
+<% end %>
