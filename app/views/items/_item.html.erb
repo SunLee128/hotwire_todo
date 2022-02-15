@@ -1,7 +1,7 @@
 <%= turbo_frame_tag item do %>
-<div class="flex flex-row m-2">
+<div class="flex flex-row justify-center items-start m-2 bg-white ">
   <%= check_box_tag 'done', item.completed %>
-  <p class="w-96 bg-white"><%= item.description %></p>
+  <p class="w-96"><%= item.description %></p>
   <%= button_to 'D', item_path(item), method: :delete, class: "btn btn-sm
   btn-outline-danger" %>
 </div>
