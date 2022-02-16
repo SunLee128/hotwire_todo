@@ -1,6 +1,9 @@
 <%= turbo_frame_tag item do %>
 <div class="flex flex-row justify-between items-start my-3 bg-white rounded shadow-xl">
-  <%= check_box_tag 'done', item.completed, false, {:class => "m-1 rounded-full"} %>
+  <%= check_box_tag 'done',
+                    item.completed,
+                    false,
+                    {:class => "m-1 rounded-full", "data-action" => "click->items#checkboxClicked", "data-items-target" => "completed"} %>
   <p class="w-96 h-full m-1"><%= item.description %></p>
   <%= button_to 'D', item_path(item), method: :delete, class: "m-1 h-full" %>
 </div>
