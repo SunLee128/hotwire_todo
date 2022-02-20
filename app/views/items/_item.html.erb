@@ -2,7 +2,9 @@
 <div class="flex flex-row justify-between items-start my-3 bg-white rounded shadow-xl w-96">
   <%= form_with(model: item) do |f| %>
     <div class="flex flex-row">
-      <%= f.check_box :completed, onchange: "this.form.requestSubmit();", :class => "m-2 rounded-full" %>
+      <div class="p-1.5">
+        <%= f.check_box :completed, onchange: "this.form.requestSubmit();", :class => "m-2 rounded-full" %>
+      </div>
       <p class="m-2"><%= item.description %></p>
     </div>
 <% end %>
