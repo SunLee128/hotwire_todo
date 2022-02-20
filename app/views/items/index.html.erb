@@ -6,11 +6,13 @@
   </h1>
   <%= render "items/form", item: @item %>
   <%= turbo_frame_tag "items" do %>
-    <div id="items">
       <%= render @items %>
-    </div>
   <% end %>
   <div class="text-gray-500">
-    <%= @completed_count %> of <%= @items.count %> items
+    <%= @completed_count %> of 
+    <span id="total_count">
+      <%= @items.count %> 
+    </span>
+    items
   </div>
 </div>
