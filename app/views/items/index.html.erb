@@ -6,7 +6,7 @@
   </h1>
   <%= render "items/form", item: @item %>
   <%= turbo_frame_tag "items" do %>
-    <div id="items" data-controller="items">
+    <div id="items">
       <%= render @items %>
     </div>
   <% end %>
