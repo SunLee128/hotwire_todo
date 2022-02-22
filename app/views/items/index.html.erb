@@ -9,10 +9,11 @@
       <%= render @items %>
   <% end %>
   <div class="text-gray-500">
-    <%= @completed_count %> of 
-    <span id="total_count">
-      <%= @items.count %> 
-    </span>
+    <%= @completed_count %> of  
+    <%= turbo_stream_from "total_count" %>
+    <%= turbo_frame_tag "total_count" do %>
+      <%= render 'total_count' %>
+    <% end %> 
     items
   </div>
 </div>
