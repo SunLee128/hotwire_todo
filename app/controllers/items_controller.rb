@@ -58,6 +58,7 @@ class ItemsController < ApplicationController
   def destroy
     @item.destroy
     @items = Item.all
+    @completed_count = @items.filter(&:completed).count
 
     respond_to do |format|
       format.turbo_stream { render :destroy }
