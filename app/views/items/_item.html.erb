@@ -6,7 +6,6 @@
           <%= f.check_box :completed, onchange: "this.form.requestSubmit();", :class => "m-2 rounded-full" %>
         </div>
         <p class="m-2"><%= item.description %></p>
-        <p><%= item.completed %></p>
       </div>
     <% end %>
     <%= button_to 'D', item_path(item), method: :delete, class: "m-1 h-full" %>
