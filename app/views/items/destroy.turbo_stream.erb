@@ -1,2 +1,3 @@
 <%= turbo_stream.remove(@item) %>
 <%= turbo_stream.update('total_count', @items.count) %>
+<%= turbo_stream.update('completed_count', @completed_count) %>

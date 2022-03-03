@@ -42,9 +42,15 @@ class ItemsController < ApplicationController
     @item = Item.find(params[:id])
     @item.update item_params
     @item.save
+    @items = Item.all
+    @completed_count = @items.filter(&:completed).count
     respond_to do |format|
-      format.js
-      format.html { redirect_to item_url(@item), notice: "Item was successfully updated." }
+      if @item.save
+        format.turbo_stream { render :update }
+        format.html { redirect_to items_url}
+      else
+        render :edit, status: :unprocessable_entity
+      end
     end
   end
 
@@ -52,6 +58,7 @@ class ItemsController < ApplicationController
   def destroy
     @item.destroy
     @items = Item.all
+    @completed_count = @items.filter(&:completed).count
 
     respond_to do |format|
       format.turbo_stream { render :destroy }
@@ -60,7 +67,7 @@ class ItemsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
+  # Use callbacks to share common setup or constraints between actions.
   def set_item
     @item = Item.find(params[:id])
   end

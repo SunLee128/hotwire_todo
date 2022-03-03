@@ -1,13 +1,13 @@
 <%= turbo_frame_tag item do %>
-<div class="flex flex-row justify-between items-start my-3 bg-white rounded shadow-xl w-96">
-  <%= form_with(model: item) do |f| %>
-    <div class="flex flex-row">
-      <div class="p-1.5">
-        <%= f.check_box :completed, onchange: "this.form.requestSubmit();", :class => "m-2 rounded-full" %>
+  <div class="flex flex-row justify-between items-start my-3 bg-white rounded shadow-xl w-96">
+    <%= form_with(model: item) do |f| %>
+      <div class="flex flex-row">
+        <div class="p-1.5">
+          <%= f.check_box :completed, onchange: "this.form.requestSubmit();", :class => "m-2 rounded-full" %>
+        </div>
+        <p class="m-2"><%= item.description %></p>
       </div>
-      <p class="m-2"><%= item.description %></p>
-    </div>
-<% end %>
+    <% end %>
     <%= button_to item_path(item), method: :delete, class: "m-1 h-full p-1.5" do %>
       <i class="fa-solid fa-trash-can"></i>
     <% end %>
