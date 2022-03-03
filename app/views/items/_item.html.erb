@@ -8,6 +8,8 @@
       <p class="m-2"><%= item.description %></p>
     </div>
 <% end %>
-    <%= button_to 'D', item_path(item), method: :delete, class: "m-1 h-full" %>
+    <%= button_to item_path(item), method: :delete, class: "m-1 h-full p-1.5" do %>
+      <i class="fa-solid fa-trash-can"></i>
+    <% end %>
 </div>
 <% end %>
