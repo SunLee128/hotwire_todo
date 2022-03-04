@@ -10,13 +10,13 @@
   <% end %>
   <div class="text-gray-500">
     <%= turbo_frame_tag "completed_count" do %>
-      <%= @completed_count %> 
+      <%= @completed_count %>
     <% end %>
     of
     <%= turbo_stream_from "total_count" %>
     <%= turbo_frame_tag "total_count" do %>
       <%= render 'total_count' %>
-    <% end %> 
+    <% end %>
     items
   </div>
 </div>
